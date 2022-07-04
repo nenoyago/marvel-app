@@ -1,0 +1,90 @@
+@use 'sass:math';
+
+/** Mixins & Functions */
+
+@mixin mq($mq-key) {
+  @media (min-width: map-get($mq, $mq-key)) {
+    @content;
+  }
+}
+
+@function color($color-key) {
+  @if map-has-key($colors, $color-key) {
+    @return map-get($colors, $color-key);
+  }
+  @error "Property #{$color-key} does not exist in colors settings";
+}
+
+@function border-radius($radius-key) {
+  @if map-has-key($radius, $radius-key) {
+    @return map-get($radius, $radius-key);
+  }
+  @error "Property #{$radius-key} does not exist in radius settings";
+}
+
+@function rem($size) {
+  @return math.div($size, 10px) * 1rem;
+}
+
+/** Media Queries */
+
+$mq: (
+  'sm-mobile': 320px,
+  'lg-mobile': 480px,
+  'tablet': 768px,
+  'laptop': 1024px,
+  'desktop': 1366px,
+  'infinity': 1440px,
+);
+
+/** Colors */
+
+$transparent: transparent;
+
+$neutral-hight-pure: #fff;
+$neutral-low-pure: #000;
+$neutral-low-pure-light: #767676;
+$neutral-low-pure-medium: #393939;
+$neutral-low-pure-dark: #202020;
+
+$brand-primary-pure: #e23636;
+$brand-secondary-pure: #518cca;
+$brand-tertiary-pure: #f78f3f;
+
+$feedback-success-pure: #22bb33;
+$feedback-warning-pure: #bb2124;
+$feedback-danger-pure: #f0ad4e;
+
+$colors: (
+  'transparent': $transparent,
+  'neutral-hight-pure': $neutral-hight-pure,
+  'neutral-low-pure': $neutral-low-pure,
+  'neutral-low-pure-light': $neutral-low-pure-light,
+  'neutral-low-pure-medium': $neutral-low-pure-medium,
+  'neutral-low-pure-dark': $neutral-low-pure-dark,
+
+  'brand-primary-pure': $brand-primary-pure,
+  'brand-secondary-pure': $brand-secondary-pure,
+  'brand-tertiary-pure': $brand-tertiary-pure,
+
+  'feedback-success-pure': $feedback-success-pure,
+  'feedback-warning-pure': $feedback-warning-pure,
+  'feedback-danger-pure': $feedback-danger-pure,
+);
+
+/** Borders Radius */
+
+$radius: (
+  'none': 0,
+  'sm': rem(2px),
+  'base': rem(4px),
+  'md': rem(6px),
+  'lg': rem(8px),
+  'xl': rem(12px),
+  '2xl': rem(16px),
+  '3xl': rem(24px),
+  'full': 9999px,
+);
+
+$base-font-size: 62.5%; // 10px
+$base-font: 'Poppins', sans-serif;

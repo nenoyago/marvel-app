@@ -1,0 +1,113 @@
+@mixin headline-h1($weight: 600, $font: $base-font) {
+  font-family: $font;
+  font-weight: $weight;
+  font-style: normal;
+  font-size: rem(28px);
+  line-height: 1.2;
+  color: color('neutral-low-pure-dark');
+
+  @include mq('laptop') {
+    font-size: rem(32px);
+  }
+
+  @include mq('desktop') {
+    font-size: rem(36px);
+  }
+}
+
+@mixin headline-h2($weight: 600, $font: $base-font) {
+  font-family: $font;
+  font-weight: $weight;
+  font-style: normal;
+  font-size: rem(22px);
+  line-height: 1.2;
+  color: color('neutral-low-pure-dark');
+
+  @include mq('laptop') {
+    font-size: rem(24px);
+  }
+
+  @include mq('desktop') {
+    font-size: rem(28px);
+  }
+}
+
+@mixin headline-h3($weight: 500, $font: $base-font) {
+  font-family: $font;
+  font-weight: $weight;
+  font-style: normal;
+  font-size: rem(16px);
+  line-height: 1.2;
+  color: color('neutral-low-pure-dark');
+
+  @include mq('laptop') {
+    font-size: rem(21px);
+  }
+
+  @include mq('desktop') {
+    font-size: rem(24px);
+  }
+}
+
+@mixin headline-h4($weight: 400, $font: $base-font) {
+  font-family: $font;
+  font-weight: $weight;
+  font-style: normal;
+  font-size: rem(16px);
+  line-height: 1.2;
+  color: color('neutral-low-pure-dark');
+
+  @include mq('laptop') {
+    font-size: rem(18px);
+  }
+}
+
+@mixin paragraph($weight: 400, $font: $base-font) {
+  font-family: $font;
+  font-weight: $weight;
+  font-style: normal;
+  font-size: rem(14px);
+  line-height: 1.2;
+  color: color('neutral-low-pure-dark');
+
+  @include mq('tablet') {
+    font-size: rem(16px);
+  }
+}
+
+@mixin small($weight: 400, $font: $base-font) {
+  font-family: $font;
+  font-weight: $weight;
+  font-style: normal;
+  font-size: rem(10px);
+  line-height: 1.2;
+  color: color('neutral-low-pure-dark');
+
+  @include mq('tablet') {
+    font-size: rem(12px);
+  }
+}
+
+@mixin button($weight: 500, $font: $base-font) {
+  font-family: $font;
+  font-weight: $weight;
+  font-size: rem(16px);
+  line-height: 1.2;
+  color: color('neutral-low-pure-dark');
+
+  @include mq('laptop') {
+    font-size: rem(18px);
+  }
+}
+
+@mixin buttonSmall($weight: 400, $font: $base-font) {
+  font-family: $font;
+  font-weight: $weight;
+  font-size: rem(12px);
+  line-height: 1.2;
+  color: color('neutral-low-pure-dark');
+
+  @include mq('laptop') {
+    font-size: rem(14px);
+  }
+}

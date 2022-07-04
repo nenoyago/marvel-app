@@ -1,0 +1,19 @@
+<div class="card" *ngIf="character">
+  <figure class="card__thumb">
+    <img
+      [src]="character!.thumbnail.path + '.' + character!.thumbnail.extension"
+      [alt]="character!.name"
+      class="card__image"
+      loading="lazy"
+    />
+    <figcaption class="card__caption">
+      <h2 class="card__title">
+        {{ character!.name }}
+      </h2>
+      <p class="card__snippet">
+        {{ character!.description }}
+      </p>
+      <a routerLink="/" class="card__button">Read more</a>
+    </figcaption>
+  </figure>
+</div>

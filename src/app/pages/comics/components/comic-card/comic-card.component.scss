@@ -1,0 +1,90 @@
+@import 'variables';
+@import 'typography';
+
+.comic-card {
+  figure {
+    position: relative;
+    margin: rem(4px);
+    min-width: 180px;
+    height: 270px;
+    overflow: hidden;
+    border-radius: border-radius('md');
+    box-shadow: 0 5px 10px rgba(color('neutral-low-pure'), 0.8);
+    transform-origin: center top;
+    transform-style: preserve-3d;
+    transform: translateZ(0);
+    transition: 0.3s;
+
+    a {
+      height: 100%;
+    }
+
+    &:after {
+      position: absolute;
+      content: '';
+      z-index: 10;
+      width: 200%;
+      height: 100%;
+      top: -90%;
+      left: -20px;
+      opacity: 0.1;
+      transform: rotate(45deg);
+      background: linear-gradient(
+        to top,
+        transparent,
+        color('neutral-hight-pure') 15%,
+        rgba(color('neutral-hight-pure'), 0.5)
+      );
+      transition: 0.3s;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      box-shadow: 0 8px 16px 3px rgba(#000, 0.6);
+      transform: translateY(-3px) scale(1.05) rotateX(15deg);
+
+      &::after {
+        transform: rotate(25deg);
+        top: -40%;
+        opacity: 0.15;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to top,
+          transparent,
+          color('neutral-low-pure-dark') 0%,
+          rgba(0, 0, 0, 0.25)
+        );
+      }
+
+      figcaption {
+        transform: none;
+      }
+    }
+  }
+
+  img {
+    min-height: 100%;
+  }
+
+  figcaption {
+    @include paragraph();
+    color: color('neutral-hight-pure');
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: rem(24px);
+    background: none;
+    transform: translateY(100%);
+    transition: 0.3s;
+  }
+}

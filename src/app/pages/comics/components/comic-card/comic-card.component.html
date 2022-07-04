@@ -1,0 +1,13 @@
+<div class="comic-card">
+  <a routerLink="/">
+    <figure>
+      <img
+        [src]="comic?.thumbnail?.path + '.' + comic?.thumbnail?.extension"
+        [alt]="comic?.title"
+        loading="lazy"
+      />
+
+      <figcaption>{{ comic?.title }}</figcaption>
+    </figure>
+  </a>
+</div>

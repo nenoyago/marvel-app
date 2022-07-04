@@ -1,0 +1,186 @@
+@import 'variables';
+@import 'typography';
+
+#marvel-header {
+  background-color: color('neutral-low-pure-dark');
+
+  .marvel-header-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 72px;
+    padding: rem(16px) rem(32px);
+  }
+}
+
+#marvel-logo .marvel-logo-icon {
+  width: rem(120px);
+  height: rem(48px);
+}
+
+#marvel-menu {
+  display: block;
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+  width: 100%;
+  top: 64px;
+  right: 0;
+  height: 0;
+  z-index: 1000;
+  overflow-y: hidden;
+  background-color: color('neutral-low-pure-dark');
+  transition: 0.5s linear;
+
+  li {
+    border-bottom: 2px ridge rgba(255, 255, 255, 0.08);
+  }
+
+  a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: rem(16px) rem(48px) rem(16px) rem(32px);
+    transition: 0.3s ease;
+    @include headline-h4();
+    color: color('neutral-hight-pure');
+
+    &::after {
+      content: '';
+      mask: url('../../../assets/arrow-forward.svg');
+      mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask: url('../../../assets/arrow-forward.svg');
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      background-color: color('brand-tertiary-pure');
+
+      width: rem(20px);
+      height: rem(20px);
+      transition: 0.3s linear;
+    }
+
+    &.active-link {
+      &::after {
+        background-color: color('neutral-low-pure-light');
+      }
+      color: color('neutral-low-pure-light');
+    }
+
+    &:hover {
+      &::after {
+        transform: translateX(4px);
+      }
+    }
+  }
+}
+
+#btn-mobile {
+  display: flex;
+  align-items: center;
+  gap: rem(8px);
+  padding: rem(8px) rem(16px);
+  transition: 0.3s ease;
+  @include headline-h4();
+  color: color('neutral-hight-pure');
+
+  .btn-mobile-hamburger {
+    border-top: 2px solid;
+    border-radius: border-radius('sm');
+    width: 20px;
+
+    &::before,
+    &::after {
+      content: '';
+      position: relative;
+      background-color: currentColor;
+      display: block;
+      width: 20px;
+      height: 2px;
+      margin-top: 4px;
+      transition: 0.5s ease;
+    }
+  }
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
+#marvel-nav.active {
+  #marvel-menu {
+    padding-top: rem(24px);
+    height: calc(100vh - 64px);
+    visibility: visible;
+    pointer-events: auto;
+    overflow-y: auto;
+  }
+
+  #btn-mobile .btn-mobile-hamburger {
+    border-top-color: color('transparent');
+
+    &::before {
+      transform: rotate(135deg);
+    }
+
+    &::after {
+      transform: rotate(-135deg);
+      top: -6px;
+    }
+  }
+}
+
+:host {
+  @include mq('tablet') {
+    #btn-mobile {
+      display: none;
+    }
+
+    #marvel-menu {
+      display: flex;
+      height: auto;
+      position: static;
+      visibility: visible;
+      pointer-events: auto;
+      overflow-y: auto;
+
+      li {
+        border: none;
+
+        a {
+          display: block;
+          padding: rem(16px);
+
+          &::after {
+            all: unset;
+            content: '';
+            position: relative;
+            display: block;
+            transform-origin: 100% 50%;
+            opacity: 0;
+            top: 4px;
+            border-bottom: 2px solid color('brand-primary-pure');
+            border-radius: 1px;
+            transform: scaleX(0);
+            transition: transform 0.3s cubic-bezier(0.7, 0, 1, 1) 77ms,
+              opacity 0.3s cubic-bezier(0.7, 0, 1, 1) 77ms;
+          }
+
+          &.active-link::after {
+            background: unset;
+          }
+
+          &:hover::after,
+          &.active-link::after {
+            border-bottom-color: color('brand-primary-pure');
+            transform-origin: 0% 50%;
+            transform: scaleX(1);
+            opacity: 1;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 77ms,
+              opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 77ms;
+          }
+        }
+      }
+    }
+  }
+}

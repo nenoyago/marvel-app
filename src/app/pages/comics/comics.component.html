@@ -1,0 +1,29 @@
+<div class="comics-container">
+  <main class="comics-wrapper">
+    <h1 class="comics-wrapper__title">
+      Marvel Comics
+      <span *ngIf="comics$ | async as comics">({{ comics | count }})</span>
+    </h1>
+    <section class="comics-section">
+      <ng-container *ngIf="comics$ | async as comics; else loading">
+        <ul class="comics-list">
+          <li *ngFor="let comic of comics">
+            <app-comic-card [comic]="comic"></app-comic-card>
+          </li>
+        </ul>
+      </ng-container>
+
+      <ng-template #loading>
+        <ngx-skeleton-loader
+          count="20"
+          [theme]="{
+            height: '270px',
+            'min-width': '180px',
+            'border-radius': '4px',
+            'background-color': '#f8f9fd'
+          }"
+        ></ngx-skeleton-loader>
+      </ng-template>
+    </section>
+  </main>
+</div>

@@ -1,0 +1,19 @@
+@import 'variables';
+
+#shell-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  padding: rem(32px);
+}
+
+app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}

@@ -1,0 +1,29 @@
+<div class="series-container">
+  <main class="series-wrapper">
+    <h1 class="series-wrapper__title">
+      Marvel Series
+      <span *ngIf="series$ | async as series">({{ series | count }})</span>
+    </h1>
+    <section class="series-section">
+      <ng-container *ngIf="series$ | async as series; else loading">
+        <ul class="series-list">
+          <li *ngFor="let serie of series">
+            <app-serie-card [serie]="serie"></app-serie-card>
+          </li>
+        </ul>
+      </ng-container>
+
+      <ng-template #loading>
+        <ngx-skeleton-loader
+          count="20"
+          [theme]="{
+            height: '440px',
+            'min-width': '300px',
+            'border-radius': '2px',
+            'background-color': '#f8f9fd'
+          }"
+        ></ngx-skeleton-loader>
+      </ng-template>
+    </section>
+  </main>
+</div>

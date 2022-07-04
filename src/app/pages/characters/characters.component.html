@@ -1,0 +1,31 @@
+<div class="characters-container">
+  <main class="characters-wrapper">
+    <h1 class="characters-wrapper__title">
+      Marvel Characters
+      <span *ngIf="characters$ | async as characters"
+        >({{ characters | count }})</span
+      >
+    </h1>
+    <section class="characters-section">
+      <ng-container *ngIf="characters$ | async as characters; else loading">
+        <ul class="characters-list">
+          <li *ngFor="let character of characters">
+            <app-character-card [character]="character"></app-character-card>
+          </li>
+        </ul>
+      </ng-container>
+
+      <ng-template #loading>
+        <ngx-skeleton-loader
+          count="20"
+          [theme]="{
+            height: '400px',
+            'min-width': '300px',
+            'border-radius': '2px',
+            'background-color': '#f8f9fd'
+          }"
+        ></ngx-skeleton-loader>
+      </ng-template>
+    </section>
+  </main>
+</div>

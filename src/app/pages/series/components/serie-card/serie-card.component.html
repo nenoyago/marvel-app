@@ -1,0 +1,16 @@
+<div class="serie-card">
+  <figure>
+    <img
+      [src]="serie?.thumbnail?.path + '.' + serie?.thumbnail?.extension"
+      [alt]="serie?.title"
+      loading="lazy"
+    />
+    <figcaption>
+      <h1>{{ serie?.title }}</h1>
+      <p>
+        {{ serie?.description }}
+      </p>
+      <a routerLink="/"> See more </a>
+    </figcaption>
+  </figure>
+</div>

@@ -1,0 +1,19 @@
+::-webkit-scrollbar {
+  width: 10px !important;
+  border-radius: 20px !important;
+  position: absolute !important;
+  right: 0 !important;
+}
+
+::-webkit-scrollbar-track {
+  background: color('neutral-low-pure-medium') !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: color('neutral-low-pure-light') !important;
+  border-radius: 20px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: color('neutral-low-pure-light') !important;
+}

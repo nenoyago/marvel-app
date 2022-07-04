@@ -1,0 +1,135 @@
+@import 'variables';
+@import 'typography';
+
+.card {
+  min-width: 300px;
+  height: 400px;
+  margin: rem(8px);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+  border-radius: border-radius('sm');
+  overflow: hidden;
+
+  &:hover {
+    .card__caption {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .card__title {
+      -webkit-line-clamp: 3;
+    }
+
+    .card__image {
+      transform: scale(1.1);
+    }
+
+    .card__thumb {
+      &::after {
+        top: 0;
+      }
+    }
+
+    .card__snippet {
+      margin: 20px 0;
+    }
+  }
+
+  &__thumb {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    @include mq('desktop') {
+      max-height: 500px;
+    }
+
+    &::after {
+      position: absolute;
+      top: 0;
+      display: block;
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.5) 40%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transition: 0.3s;
+
+      @include mq('desktop') {
+        top: calc(100% - 140px);
+      }
+    }
+  }
+
+  &__image {
+    height: 100%;
+    transition: 0.5s ease-in-out;
+  }
+
+  &__caption {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    padding: 0 rem(24px);
+    color: white;
+    transform: translateY(-50%);
+    text-align: center;
+    transition: 0.3s;
+
+    @include mq('desktop') {
+      top: calc(100% - 80px);
+      transform: unset;
+    }
+  }
+
+  &__title {
+    display: -webkit-box;
+    overflow: hidden;
+    color: color('neutral-hight-pure');
+    text-shadow: 0px 1px 5px color('neutral-low-pure-dark');
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  &__snippet {
+    display: -webkit-box;
+    max-height: 150px;
+    margin: rem(24px) 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: 0.5s ease-in-out;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+
+    @include paragraph();
+    color: color('neutral-hight-pure');
+
+    @include mq('desktop') {
+      margin: 60px 0;
+    }
+  }
+
+  &__button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    border: 1px solid white;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: 0.3s;
+
+    &:hover {
+      color: black;
+      background-color: white;
+    }
+  }
+}

@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+@import './styles/index';
+
+h1 {
+  @include headline-h1();
+}
+
+h2 {
+  @include headline-h2();
+}
+
+h3 {
+  @include headline-h3();
+}
+
+h4 {
+  @include headline-h4();
+}
+
+p {
+  @include paragraph();
+}
+
+small {
+  @include small();
+}
+
+[disabled] {
+  opacity: 0.6;
+  cursor: default;
+}
+
+ngx-skeleton-loader span {
+  margin: 0 !important;
+}

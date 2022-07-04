@@ -1,0 +1,16 @@
+@import 'variables';
+
+.characters-list,
+ngx-skeleton-loader {
+  display: grid;
+  gap: rem(24px);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.characters-wrapper__title {
+  color: color('brand-tertiary-pure');
+}
+
+.characters-section {
+  margin-top: rem(24px);
+}

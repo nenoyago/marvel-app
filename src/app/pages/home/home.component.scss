@@ -1,0 +1,119 @@
+@import 'variables';
+@import 'typography';
+
+.main-grid {
+  display: grid;
+  gap: rem(24px);
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  height: 768px;
+
+  @include mq('tablet') {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+
+.grid-card {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+  border-radius: border-radius('2xl');
+  overflow: hidden;
+  padding: rem(24px) rem(32px);
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+      87deg,
+      rgba(0, 0, 0, 0.5) -2.97%,
+      rgba(53, 12, 4, 0.25) 73.03%
+    );
+  }
+
+  article {
+    max-width: 82.5%;
+    z-index: 1;
+  }
+
+  h1,
+  h3,
+  a {
+    color: color('neutral-hight-pure');
+  }
+
+  h3 {
+    margin-block: rem(8px);
+  }
+
+  &__footer {
+    margin: auto 0 0 auto;
+
+    &__readMore {
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      white-space: nowrap;
+      @include headline-h4();
+
+      background-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 5px 10px 20px 10px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(8px);
+      padding: rem(16px) rem(24px);
+      border-radius: border-radius('md');
+      border: 2px solid color('transparent');
+      transition: 0.3s ease;
+
+      &:hover {
+        border-color: color('neutral-hight-pure');
+        .grid-card__footer__readMoreIcon {
+          transform: translateX(4px);
+        }
+      }
+    }
+
+    &__readMoreIcon {
+      width: rem(32px);
+      fill: color('neutral-hight-pure');
+      margin-left: rem(4px);
+      transition: 0.3s linear;
+    }
+  }
+}
+
+#characters {
+  background: url('../../../assets/characters.webp') no-repeat center;
+  &:hover {
+    border-color: color('brand-tertiary-pure');
+  }
+
+  @include mq('tablet') {
+    grid-row: span 2;
+  }
+}
+
+#comics {
+  background: url('../../../assets/comics.webp') no-repeat center;
+  &:hover {
+    border-color: color('brand-primary-pure');
+  }
+}
+
+#series {
+  background: url('../../../assets/movies.webp') no-repeat center;
+  &:hover {
+    border-color: color('brand-secondary-pure');
+  }
+
+  @include mq('tablet') {
+    grid-column: 2;
+  }
+}

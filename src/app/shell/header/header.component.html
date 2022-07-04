@@ -1,0 +1,28 @@
+<header id="marvel-header">
+  <div class="marvel-header-toolbar">
+    <a id="marvel-logo" routerLink="/">
+      <svg-icon
+        src="assets/logo-marvel.svg"
+        svgClass="marvel-logo-icon"
+      ></svg-icon>
+    </a>
+
+    <nav id="marvel-nav">
+      <button id="btn-mobile">
+        Menu
+        <span class="btn-mobile-hamburger"></span>
+      </button>
+      <ul id="marvel-menu">
+        <li *ngFor="let item of menu">
+          <a
+            #anchor
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: true }"
+            [routerLink]="item.url"
+            >{{ item.name }}</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
